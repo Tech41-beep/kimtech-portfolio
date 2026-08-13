@@ -130,6 +130,22 @@ body {
     background: rgba(139, 92, 246, 0.12);
     border: 1px solid rgba(139, 92, 246, 0.25);
   }
+
+  .tool-groups { @apply grid gap-7 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2; }
+  .tool-group { @apply relative mx-auto aspect-square w-full max-w-[310px] rounded-full border border-accent-500/15; background: radial-gradient(circle, rgba(139, 92, 246, 0.13), transparent 31%), var(--card); box-shadow: inset 0 0 55px rgba(139, 92, 246, 0.05); }
+  .tool-group-center { @apply absolute left-1/2 top-1/2 z-10 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-accent-500/25 text-center; background: color-mix(in srgb, var(--bg) 88%, transparent); box-shadow: 0 0 35px rgba(139, 92, 246, 0.14); }
+  .tool-wheel { @apply absolute inset-0; animation: tool-spin 30s linear infinite; }
+  .tool-group:nth-child(2) .tool-wheel { animation-direction: reverse; animation-duration: 34s; }
+  .tool-tile { @apply absolute left-1/2 top-1/2 flex h-[62px] w-[62px] items-center justify-center rounded-full border border-themed text-center transition-colors duration-300 hover:border-accent-500/50; --tool-radius: 121px; transform: translate(-50%, -50%) rotate(var(--tool-angle)) translateY(calc(var(--tool-radius) * -1)); background: color-mix(in srgb, var(--bg) 90%, transparent); box-shadow: 0 10px 28px -16px rgba(139, 92, 246, 0.7); }
+  .tool-tile-inner { @apply flex flex-col items-center justify-center gap-1; transform: rotate(calc(var(--tool-angle) * -1)); animation: tool-counter-spin 30s linear infinite; }
+  .tool-group:nth-child(2) .tool-tile-inner { animation-direction: reverse; animation-duration: 34s; }
+  .tool-tile svg { @apply h-6 w-6 transition-transform duration-300; }
+  .tool-tile:hover svg { transform: scale(1.16); }
+  .tool-tile span { @apply max-w-[54px] text-[8px] font-medium leading-tight text-muted; }
+  .tool-group:hover .tool-wheel, .tool-group:hover .tool-tile-inner { animation-play-state: paused; }
+
+  @keyframes tool-spin { to { transform: rotate(360deg); } }
+  @keyframes tool-counter-spin { to { transform: rotate(calc(var(--tool-angle) * -1 - 360deg)); } }
 }
 
 @layer utilities {
@@ -168,5 +184,9 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  .tool-wheel,
+  .tool-tile-inner {
+    animation: none !important;
   }
 }
