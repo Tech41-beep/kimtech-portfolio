@@ -44,7 +44,7 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.36}>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a href="/Lov_Kimtech_CV.pdf" download={PROFILE.cvName} className="btn-primary">
+              <a href="/CV/Black%20and%20White%20Simple%20CV%20Resume.pdf" download={PROFILE.cvName} className="btn-primary">
                 <FiDownload size={16} />
                 Download CV
               </a>

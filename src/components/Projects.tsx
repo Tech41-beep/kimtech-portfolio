@@ -31,13 +31,36 @@ export default function Projects() {
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-themed bg-white/[0.025] transition-all duration-300 hover:border-accent-500/35 hover:shadow-glow"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={`${project.title} project preview`}
-                    loading="lazy"
-                    className="h-full w-full object-cover grayscale-[25%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-80" />
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                      preload="auto"
+                      playsInline
+                      onClick={(event) => {
+                        if (!document.fullscreenElement) {
+                          void event.currentTarget.requestFullscreen().catch(() => {
+                            // The browser can deny fullscreen when it is unavailable.
+                          });
+                        }
+                      }}
+                      className="h-full w-full cursor-pointer object-cover"
+                      aria-label={`${project.title} demo video`}
+                    >
+                      Your browser does not support video playback.
+                    </video>
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} project preview`}
+                      loading="lazy"
+                      className="h-full w-full object-cover grayscale-[25%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                    />
+                  )}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-80" />
                   <div className="absolute left-4 top-4 flex items-center gap-2">
                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ink-950/70 text-accent-300 backdrop-blur">
                       <FiLayers size={15} />
@@ -48,6 +71,8 @@ export default function Projects() {
                   </div>
                   <a
                     href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
                     aria-label={`Open ${project.title} demo`}
                     className="absolute bottom-4 right-4 flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-white text-ink-950 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
                   >
@@ -93,6 +118,8 @@ export default function Projects() {
                       </a>
                       <a
                         href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
                         className="inline-flex items-center gap-2 text-xs font-medium text-accent-300 transition-colors hover:text-accent-200"
                       >
                         Live demo <FiArrowUpRight size={14} />

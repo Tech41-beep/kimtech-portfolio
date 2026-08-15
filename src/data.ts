@@ -131,7 +131,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     title: 'Volunteer - Charity Program',
     description:
-      'Participated in a community charity program in Kampong Cham, supporting local initiatives and strengthening teamwork, communication, and leadership skills.',
+      'Participated in a community charity program in Kampong Spue, supporting local initiatives and strengthening teamwork, communication, and leadership skills.',
     year: '2025',
     image: volunteer,
     imageFit: 'contain',
@@ -166,6 +166,7 @@ export type Project = {
   title: string;
   description: string;
   image: string;
+  video?: string;
   features?: string[];
   tech: string[];
   github: string;
@@ -179,10 +180,11 @@ export const PROJECTS: Project[] = [
       'Responsive food menu website for campus canteen. Built with vanilla HTML, CSS, and JavaScript with category filtering functionality.',
     image:
       'https://images.pexels.com/photos/374560/pexels-photo-374560.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    video: '/video/Canteen_Demo.MP4',
     features: ['Responsive design', 'Food categories', 'Category filtering', 'Mobile friendly'],
     tech: ['HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/',
-    demo: '#',
+    demo: '/video/Canteen_Demo.MP4',
   },
    {
     title: 'E-Commerce Website',
@@ -190,10 +192,11 @@ export const PROJECTS: Project[] = [
       'Frontend e-commerce website built with React and Vite. Integrated external APIs using Fetch and implemented product filtering with reusable components.',
     image:
       'https://images.pexels.com/photos/374560/pexels-photo-374560.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    video: '/video/Ecommerce_Demo.MP4',
     features: ['Responsive design', 'Product filtering', 'Reusable components', 'Mobile friendly'],
     tech: ['React', 'Vite', 'JavaScript'],
     github: 'https://github.com/',
-    demo: '#',
+    demo: '/video/Ecommerce_Demo.MP4',
   },
   {
     title: 'POS System',
@@ -212,10 +215,11 @@ export const PROJECTS: Project[] = [
       'Full-stack platform connecting students with internship opportunities. Features include student & company dashboards, authentication system, internship search, and CV builder.',
     image:
       'https://images.pexels.com/photos/2764993/pexels-photo-2764993.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    video: '/video/internship_finder_Demo.mp4',
     features: ['Student dashboard', 'Company dashboard', 'Authentication', 'CV Builder', 'Search & Filter'],
     tech: ['React', 'Node.js', 'Express', 'PostgreSQL'],
     github: 'https://github.com/',
-    demo: '#',
+    demo: '/video/internship_finder_Demo.mp4',
   },
  
 ];
