@@ -19,7 +19,7 @@ export const PROFILE = {
   intro:
     'I enjoy building modern web applications that solve real-world problems. I continuously improve my programming, problem-solving, and teamwork skills through academic and personal projects.',
   portrait: image,
-  cvName: 'Lov_Kimtech_CV.pdf',
+  cvName: 'CV.pdf',
   socials: {
     github: 'https://github.com/',
     linkedin: 'https://linkedin.com/',
