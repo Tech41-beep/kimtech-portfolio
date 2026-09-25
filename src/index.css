@@ -36,8 +36,7 @@ body {
 
 /* Hide native cursor when custom cursor active (desktop only) */
 @media (hover: hover) and (pointer: fine) {
-  body.custom-cursor-on,
-  body.custom-cursor-on * {
+  body.custom-cursor-on {
     cursor: none !important;
   }
 }

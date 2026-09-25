@@ -14,12 +14,16 @@ export default function Cursor() {
 
   useEffect(() => {
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (!fine) return;
-    setEnabled(true);
+    setEnabled(fine);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled || !dotRef.current || !ringRef.current) return;
+
     document.body.classList.add('custom-cursor-on');
 
-    const dot = dotRef.current!;
-    const ring = ringRef.current!;
+    const dot = dotRef.current;
+    const ring = ringRef.current;
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
     let rx = mx;
@@ -56,7 +60,7 @@ export default function Cursor() {
       window.removeEventListener('mouseup', up);
       document.body.classList.remove('custom-cursor-on');
     };
-  }, []);
+  }, [enabled]);
 
   if (!enabled) return null;
 

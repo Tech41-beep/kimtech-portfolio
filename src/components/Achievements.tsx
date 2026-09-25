@@ -34,19 +34,31 @@ export default function Achievements() {
               >
                 <motion.article
                   whileHover={{ y: -6 }}
-                  className="glass group overflow-hidden rounded-2xl transition-shadow duration-300 hover:shadow-glow"
+                  data-cursor="hover"
+                  className="glass group cursor-pointer overflow-hidden rounded-2xl transition-shadow duration-300 hover:shadow-glow"
                 >
                   <div
-                    className={`relative overflow-hidden ${isContain ? 'h-56 bg-white/95 p-3' : 'h-44'}`}
+                    className={`relative flex items-center justify-center overflow-hidden ${isContain ? 'h-56 bg-white/95 p-3' : 'h-44 bg-ink-900/60'}`}
                   >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      loading="lazy"
-                      className={`h-full w-full grayscale-[20%] transition-transform duration-700 ${isContain ? 'object-contain group-hover:scale-100' : 'object-cover group-hover:scale-105'}`}
-                    />
-                    {!isContain && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-transparent" />
+                    {item.image ? (
+                      <>
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          loading="lazy"
+                          className={`h-full w-full grayscale-[20%] transition-transform duration-700 ${isContain ? 'object-contain group-hover:scale-100' : 'object-cover group-hover:scale-105'}`}
+                        />
+                        {!isContain && (
+                          <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-transparent" />
+                        )}
+                      </>
+                    ) : (
+                      <div className="flex flex-col items-center gap-3 text-accent-300">
+                        <FiAward size={34} />
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                          Featured work
+                        </span>
+                      </div>
                     )}
                     <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-ink-950/60 px-3 py-1 font-mono text-[10px] text-accent-300 backdrop-blur">
                       {item.year}
@@ -69,14 +81,16 @@ export default function Achievements() {
                       />
                     </div>
 
-                    <a
-                      href={item.image}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-accent-300 transition-colors hover:text-accent-200"
-                    >
-                      View certificate <FiExternalLink size={13} />
-                    </a>
+                    {item.image && (
+                      <a
+                        href={item.image}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-5 inline-flex cursor-pointer items-center gap-2 text-xs font-semibold text-accent-300 transition-colors hover:text-accent-200"
+                      >
+                        View certificate <FiExternalLink size={13} />
+                      </a>
+                    )}
                   </div>
                 </motion.article>
               </Reveal>

@@ -3,6 +3,7 @@ import image from '../img/image.jpg';
 import certificate from '../img/Certificate.jpg';
 import gemini from '../img/Gemini-certified-Student.jpg'
 import volunteer from '../img/Volunteer-certifcation.jpg';
+import coursera from '../img/Coursera.jpg';
 export const NAV_ITEMS: { id: NavId; label: string }[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About Me' },
@@ -151,6 +152,14 @@ export const ACHIEVEMENTS: Achievement[] = [
     year: '2026',
     image: '',
     imageFit: 'cover',
+  },
+  {
+    title: 'Coursera: Database Structures and Management with MySQL',
+    description:
+      'Completed the Database Structures and Management with MySQL course, authorized by Meta and offered through Coursera.',
+    year: '2026',
+    image: coursera,
+    imageFit: 'contain',
   },
    
   // {
