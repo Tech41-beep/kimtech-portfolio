@@ -4,6 +4,7 @@ import certificate from '../img/Certificate.jpg';
 import gemini from '../img/Gemini-certified-Student.jpg'
 import volunteer from '../img/Volunteer-certifcation.jpg';
 import coursera from '../img/Coursera.jpg';
+import ibmFlutter from '../img/IBM_Flutter.jpg';
 export const NAV_ITEMS: { id: NavId; label: string }[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About Me' },
@@ -84,12 +85,12 @@ export const SKILL_GROUPS: SkillGroup[] = [
   {
     title: 'Core Languages',
     icon: 'code',
-    skills: ['JavaScript', 'TypeScript', 'C', 'C++', 'Java', 'SQL'],
+    skills: ['JavaScript', 'TypeScript', 'Dart', 'C', 'C++', 'Java', 'SQL'],
   },
   {
     title: 'UI Engineering',
     icon: 'layout',
-    skills: ['React', 'Vite', 'Tailwind CSS', 'Bootstrap', 'Responsive UI'],
+    skills: ['React', 'Vite', 'Flutter', 'Tailwind CSS', 'Bootstrap', 'Responsive UI'],
   },
   {
     title: 'Server-side',
@@ -159,6 +160,14 @@ export const ACHIEVEMENTS: Achievement[] = [
       'Completed the Database Structures and Management with MySQL course, authorized by Meta and offered through Coursera.',
     year: '2026',
     image: coursera,
+    imageFit: 'contain',
+  },
+  {
+    title: 'IBM: Flutter and Dart Mobile App Development',
+    description:
+      'Completed the Flutter and Dart: Developing iOS, Android, and Mobile Apps course, authorized by IBM and offered through Coursera.',
+    year: '2026',
+    image: ibmFlutter,
     imageFit: 'contain',
   },
    
