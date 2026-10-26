@@ -5,6 +5,7 @@ import gemini from '../img/Gemini-certified-Student.jpg'
 import volunteer from '../img/Volunteer-certifcation.jpg';
 import coursera from '../img/Coursera.jpg';
 import ibmFlutter from '../img/IBM_Flutter.jpg';
+import microsoftUserExperience from '../img/UserExpericne-Certification.png';
 export const NAV_ITEMS: { id: NavId; label: string }[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About Me' },
@@ -122,6 +123,14 @@ export type Achievement = {
   imageFit?: 'cover' | 'contain';
 };
 export const ACHIEVEMENTS: Achievement[] = [
+  {
+    title: 'Microsoft: User Experience Design',
+    description:
+      'Completed Microsoft’s User Experience Design certificate, building foundational skills in user research, interaction design, prototyping, and creating accessible digital experiences.',
+    year: '2026',
+    image: microsoftUserExperience,
+    imageFit: 'contain',
+  },
   {
     title: 'CCNA: Introduction to Networks',
     description:
