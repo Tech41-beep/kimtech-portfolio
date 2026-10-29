@@ -1,92 +1,128 @@
 import { motion } from 'framer-motion';
-import { FiAward, FiExternalLink } from 'react-icons/fi';
+import {
+  FiArrowUpRight,
+  FiAward,
+  FiCheckCircle,
+  FiExternalLink,
+} from 'react-icons/fi';
 import { ACHIEVEMENTS } from '@/data';
 import Reveal from '@/components/Reveal';
 
 export default function Achievements() {
+  const featured =
+    ACHIEVEMENTS.find((item) => item.title.includes('Meta')) ?? ACHIEVEMENTS[0];
+  const supporting = ACHIEVEMENTS.filter((item) => item !== featured);
+
   return (
-    <section id="achievement" className="section-pad relative overflow-hidden">
+    <section id="achievement" className="achievement-section section-pad relative overflow-hidden">
       <div className="container-x">
         <Reveal>
-          <div className="mb-12">
-            <p className="eyebrow">02 / Achievements</p>
-            <h2 className="heading-lg mt-4 text-fg">
-              Small wins.
-              <br />
-              <span className="gradient-text">Meaningful milestones.</span>
-            </h2>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted">
-              Every achievement is a reminder to stay curious, keep showing up,
-              and make the next thing a little better.
+          <div className="achievement-intro mb-12 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+            <div className="max-w-2xl">
+              <p className="achievement-kicker">02 / Achievements</p>
+              <h2 className="achievement-heading mt-4">
+                Proof of <span>progress.</span>
+                <br />
+                Built one milestone at a time.
+              </h2>
+            </div>
+            <p className="achievement-intro-copy max-w-sm text-sm leading-relaxed">
+              A growing archive of courses, community work, and projects that
+              keep me curious and moving forward.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {ACHIEVEMENTS.map((item, i) => {
+        <Reveal>
+          <motion.article
+            whileHover={{ y: -4 }}
+            className="achievement-feature group"
+          >
+            <div className="achievement-feature-media">
+              {featured.image ? (
+                <img
+                  src={featured.image}
+                  alt={featured.title}
+                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              ) : (
+                <FiAward size={40} />
+              )}
+              <span className="achievement-feature-label">Featured certificate</span>
+            </div>
+
+            <div className="achievement-feature-content">
+              <div className="flex items-center justify-between gap-4">
+                <span className="achievement-year">{featured.year}</span>
+                <FiCheckCircle className="text-[#1877f2]" size={22} />
+              </div>
+              <p className="achievement-meta mt-8">Meta · Coursera</p>
+              <h3 className="achievement-feature-title mt-3">
+                {featured.title.replace('Coursera: ', '')}
+              </h3>
+              <p className="achievement-feature-description mt-5">
+                {featured.description}
+              </p>
+              {featured.image && (
+                <a
+                  href={featured.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="achievement-link mt-8"
+                >
+                  Open certificate <FiArrowUpRight size={16} />
+                </a>
+              )}
+            </div>
+          </motion.article>
+        </Reveal>
+
+        <div className="achievement-grid mt-5">
+          {supporting.map((item, i) => {
             const isContain = item.imageFit === 'contain';
 
             return (
-              <Reveal
-                key={item.title}
-                delay={(i % 3) * 0.08}
-                className={i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}
-              >
+              <Reveal key={item.title} delay={(i % 3) * 0.08}>
                 <motion.article
-                  whileHover={{ y: -6 }}
+                  whileHover={{ y: -5 }}
                   data-cursor="hover"
-                  className="glass group cursor-pointer overflow-hidden rounded-2xl transition-shadow duration-300 hover:shadow-glow"
+                  className="achievement-card group"
                 >
                   <div
-                    className={`relative flex items-center justify-center overflow-hidden ${isContain ? 'h-56 bg-white/95 p-3' : 'h-44 bg-ink-900/60'}`}
+                    className={`achievement-card-media ${isContain ? 'is-contain' : ''}`}
                   >
                     {item.image ? (
-                      <>
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          loading="lazy"
-                          className={`h-full w-full grayscale-[20%] transition-transform duration-700 ${isContain ? 'object-contain group-hover:scale-100' : 'object-cover group-hover:scale-105'}`}
-                        />
-                        {!isContain && (
-                          <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-transparent" />
-                        )}
-                      </>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        loading="lazy"
+                        className={`h-full w-full transition-transform duration-700 ${isContain ? 'object-contain group-hover:scale-[1.03]' : 'object-cover group-hover:scale-105'}`}
+                      />
                     ) : (
-                      <div className="flex flex-col items-center gap-3 text-accent-300">
-                        <FiAward size={34} />
-                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                      <div className="flex flex-col items-center gap-3 text-[#1877f2]">
+                        <FiAward size={30} />
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em]">
                           Featured work
                         </span>
                       </div>
                     )}
-                    <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-ink-950/60 px-3 py-1 font-mono text-[10px] text-accent-300 backdrop-blur">
-                      {item.year}
-                    </span>
+                    <span className="achievement-card-year">{item.year}</span>
                   </div>
 
                   <div className="p-5">
                     <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="font-display text-lg font-semibold text-fg">
-                          {item.title}
-                        </h3>
-                        <p className="mt-2 text-xs leading-relaxed text-muted">
-                          {item.description}
-                        </p>
-                      </div>
-                      <FiAward
-                        className="mt-1 shrink-0 text-accent-400"
-                        size={19}
-                      />
+                      <h3 className="achievement-card-title">{item.title}</h3>
+                      <FiAward className="mt-1 shrink-0 text-[#1877f2]" size={18} />
                     </div>
-
+                    <p className="achievement-card-description mt-3">
+                      {item.description}
+                    </p>
                     {item.image && (
                       <a
                         href={item.image}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-5 inline-flex cursor-pointer items-center gap-2 text-xs font-semibold text-accent-300 transition-colors hover:text-accent-200"
+                        className="achievement-link mt-5"
                       >
                         View certificate <FiExternalLink size={13} />
                       </a>
